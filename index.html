@@ -1,26 +1,416 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>future-spark-portal</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Future Spark University</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">FutureSparkUniversity</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="programs.html">Programs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="enrollment.html">Enroll Now</a>
+          </li>
+        </ul>
+        <a href="dashboard.html" class="btn btn-outline-light">
+          <i class="bi bi-person me-2"></i>Student Portal
+        </a>
+      </div>
+    </div>
+  </nav>
 
-    <meta property="og:title" content="future-spark-portal" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  <!-- Hero Section -->
+  <div class="bg-primary bg-gradient text-white py-5">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-6">
+          <h1 class="display-4 fw-bold mb-4">Shape Your Future with Excellence</h1>
+          <p class="lead mb-4">Discover world-class education, innovative research opportunities, and a vibrant campus community at Future Spark University.</p>
+          <div class="d-flex flex-column flex-sm-row gap-3">
+            <a href="enrollment.html" class="btn btn-light btn-lg text-primary">
+              Enroll Now <i class="bi bi-arrow-right ms-2"></i>
+            </a>
+            <a href="programs.html" class="btn btn-outline-light btn-lg">
+              Explore Programs
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+  <!-- Announcements Section -->
+  <div class="bg-light py-5">
+    <div class="container">
+      <div class="d-flex align-items-center mb-4">
+        <i class="bi bi-bell text-info fs-4 me-2"></i>
+        <h2 class="text-primary mb-0">Latest Announcements</h2>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm hover-shadow">
+            <div class="card-body">
+              <div class="d-flex justify-content-between mb-3">
+                <div>
+                  <div class="text-info small fw-bold mb-1">Academic</div>
+                  <h5 class="card-title text-primary">Summer Registration Now Open</h5>
+                </div>
+                <div class="bg-light rounded-circle p-3 text-primary">
+                  <i class="bi bi-calendar"></i>
+                </div>
+              </div>
+              <p class="card-text text-muted mb-3">Early registration for summer courses is now open for all students. Reserve your spot before classes fill up.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="text-muted small">April 5, 2025</span>
+                <a href="#" class="text-decoration-none text-info">
+                  Read more <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm hover-shadow">
+            <div class="card-body">
+              <div class="d-flex justify-content-between mb-3">
+                <div>
+                  <div class="text-info small fw-bold mb-1">Financial</div>
+                  <h5 class="card-title text-primary">New Scholarship Opportunities</h5>
+                </div>
+                <div class="bg-light rounded-circle p-3 text-primary">
+                  <i class="bi bi-award"></i>
+                </div>
+              </div>
+              <p class="card-text text-muted mb-3">Several new merit and need-based scholarships are available for the upcoming academic year.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="text-muted small">April 3, 2025</span>
+                <a href="#" class="text-decoration-none text-info">
+                  Read more <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm hover-shadow">
+            <div class="card-body">
+              <div class="d-flex justify-content-between mb-3">
+                <div>
+                  <div class="text-info small fw-bold mb-1">Event</div>
+                  <h5 class="card-title text-primary">Campus Career Fair</h5>
+                </div>
+                <div class="bg-light rounded-circle p-3 text-primary">
+                  <i class="bi bi-people"></i>
+                </div>
+              </div>
+              <p class="card-text text-muted mb-3">Over 50 companies will be recruiting at our annual career fair on April 15. Prepare your resume!</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="text-muted small">March 28, 2025</span>
+                <a href="#" class="text-decoration-none text-info">
+                  Read more <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-5">
+        <a href="#" class="btn btn-outline-info">
+          View All Announcements <i class="bi bi-arrow-right ms-2"></i>
+        </a>
+      </div>
+    </div>
+  </div>
 
-  <body>
-    <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  <!-- Featured Programs Section -->
+  <div class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="text-primary mb-3">Featured Programs</h2>
+        <p class="lead text-muted mx-auto" style="max-width: 700px;">
+          Discover our most popular degree programs designed to prepare you for success in today's competitive job market.
+        </p>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm hover-shadow">
+            <div style="height: 200px; overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800" 
+                   class="card-img-top" alt="Computer Science">
+            </div>
+            <div class="card-body">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="badge bg-light text-primary">Technology</span>
+                <span class="badge bg-info text-white">Popular</span>
+              </div>
+              <h5 class="card-title text-primary">Computer Science</h5>
+              <p class="card-text text-muted">Develop expertise in artificial intelligence, software engineering, and data science with our comprehensive program.</p>
+            </div>
+            <div class="card-footer bg-white">
+              <a href="programs/1.html" class="btn btn-primary w-100">
+                Learn More <i class="bi bi-arrow-right ms-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm hover-shadow">
+            <div style="height: 200px; overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800" 
+                   class="card-img-top" alt="Business Administration">
+            </div>
+            <div class="card-body">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="badge bg-light text-primary">Business</span>
+              </div>
+              <h5 class="card-title text-primary">Business Administration</h5>
+              <p class="card-text text-muted">Learn key management principles, finance, marketing, and entrepreneurship skills needed in today's global economy.</p>
+            </div>
+            <div class="card-footer bg-white">
+              <a href="programs/2.html" class="btn btn-primary w-100">
+                Learn More <i class="bi bi-arrow-right ms-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm hover-shadow">
+            <div style="height: 200px; overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=800" 
+                   class="card-img-top" alt="Environmental Science">
+            </div>
+            <div class="card-body">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="badge bg-light text-primary">Science</span>
+                <span class="badge bg-info text-white">Popular</span>
+              </div>
+              <h5 class="card-title text-primary">Environmental Science</h5>
+              <p class="card-text text-muted">Study sustainability, conservation, and environmental policy to address the world's most pressing ecological challenges.</p>
+            </div>
+            <div class="card-footer bg-white">
+              <a href="programs/3.html" class="btn btn-primary w-100">
+                Learn More <i class="bi bi-arrow-right ms-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-5">
+        <a href="programs.html" class="btn btn-outline-primary">
+          View All Programs <i class="bi bi-arrow-right ms-2"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats Section -->
+  <div class="bg-light py-5">
+    <div class="container">
+      <div class="row text-center g-4">
+        <div class="col-md-3 col-6">
+          <div class="bg-white rounded-circle mx-auto p-4 mb-3" style="width: 80px; height: 80px;">
+            <i class="bi bi-people fs-2 text-primary"></i>
+          </div>
+          <h3 class="text-primary fw-bold mb-2">10,000+</h3>
+          <p class="text-muted">Students Enrolled</p>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="bg-white rounded-circle mx-auto p-4 mb-3" style="width: 80px; height: 80px;">
+            <i class="bi bi-mortarboard fs-2 text-primary"></i>
+          </div>
+          <h3 class="text-primary fw-bold mb-2">500+</h3>
+          <p class="text-muted">Expert Faculty</p>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="bg-white rounded-circle mx-auto p-4 mb-3" style="width: 80px; height: 80px;">
+            <i class="bi bi-book fs-2 text-primary"></i>
+          </div>
+          <h3 class="text-primary fw-bold mb-2">100+</h3>
+          <p class="text-muted">Degree Programs</p>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="bg-white rounded-circle mx-auto p-4 mb-3" style="width: 80px; height: 80px;">
+            <i class="bi bi-globe fs-2 text-primary"></i>
+          </div>
+          <h3 class="text-primary fw-bold mb-2">50+</h3>
+          <p class="text-muted">Global Partners</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials Section -->
+  <div class="bg-primary py-5 text-white">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="mb-3">Student Testimonials</h2>
+        <p class="lead text-white-50 mx-auto" style="max-width: 700px;">
+          Hear from our students about their experiences at Future Spark University.
+        </p>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="bg-white bg-opacity-10 p-4 rounded-3 h-100">
+            <i class="bi bi-quote fs-2 text-info mb-3"></i>
+            <p class="mb-4 fst-italic">"Studying at Future Spark University has been transformative. The professors are experts in their fields and genuinely care about student success."</p>
+            <div class="d-flex align-items-center">
+              <img src="https://i.pravatar.cc/150?img=32" alt="Sarah Johnson" class="rounded-circle me-3" width="48" height="48">
+              <div>
+                <h6 class="mb-0">Sarah Johnson</h6>
+                <small class="text-white-50">Computer Science Graduate, 2024</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="bg-white bg-opacity-10 p-4 rounded-3 h-100">
+            <i class="bi bi-quote fs-2 text-info mb-3"></i>
+            <p class="mb-4 fst-italic">"The practical learning opportunities and industry connections helped me secure my dream job before graduation. I couldn't recommend this university more!"</p>
+            <div class="d-flex align-items-center">
+              <img src="https://i.pravatar.cc/150?img=53" alt="Michael Chen" class="rounded-circle me-3" width="48" height="48">
+              <div>
+                <h6 class="mb-0">Michael Chen</h6>
+                <small class="text-white-50">Business Administration Graduate, 2023</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="bg-white bg-opacity-10 p-4 rounded-3 h-100">
+            <i class="bi bi-quote fs-2 text-info mb-3"></i>
+            <p class="mb-4 fst-italic">"The support systems and inclusive community at Future Spark made my international student experience incredibly valuable both academically and personally."</p>
+            <div class="d-flex align-items-center">
+              <img src="https://i.pravatar.cc/150?img=47" alt="Aisha Patel" class="rounded-circle me-3" width="48" height="48">
+              <div>
+                <h6 class="mb-0">Aisha Patel</h6>
+                <small class="text-white-50">Environmental Science Student, 3rd Year</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="bg-primary py-5">
+    <div class="container">
+      <div class="bg-gradient p-5 rounded-4 shadow-lg">
+        <div class="row align-items-center">
+          <div class="col-lg-8 mb-4 mb-lg-0">
+            <h2 class="text-white mb-3">Ready to Start Your Journey?</h2>
+            <p class="text-white-50 lead mb-0">
+              Apply now to join our diverse community of learners and innovators. Take the first step toward a brighter future with Future Spark University.
+            </p>
+          </div>
+          <div class="col-lg-4 d-flex flex-column flex-sm-row gap-3">
+            <a href="enrollment.html" class="btn btn-light text-primary fw-bold">
+              Apply Now <i class="bi bi-arrow-right ms-2"></i>
+            </a>
+            <a href="programs.html" class="btn btn-outline-light">
+              Explore Programs
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-4">Future Spark University</h5>
+          <p class="text-muted mb-4">
+            Transforming lives through accessible, innovative education 
+            and research excellence since 1975.
+          </p>
+          <div class="d-flex gap-3">
+            <a href="#" class="text-muted"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-muted"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-muted"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-muted"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-4">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html" class="text-muted">Home</a></li>
+            <li class="mb-2"><a href="programs.html" class="text-muted">Programs</a></li>
+            <li class="mb-2"><a href="enrollment.html" class="text-muted">Enrollment</a></li>
+            <li class="mb-2"><a href="dashboard.html" class="text-muted">Student Portal</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">About Us</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Campus Life</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-4">Resources</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" class="text-muted">Academic Calendar</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Library</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Career Services</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Financial Aid</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Student Support</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Research</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-4">Contact Us</h5>
+          <ul class="list-unstyled">
+            <li class="mb-3 d-flex">
+              <i class="bi bi-geo-alt text-info me-2 mt-1"></i>
+              <span class="text-muted">123 University Avenue, Education City, ST 54321, USA</span>
+            </li>
+            <li class="mb-3 d-flex">
+              <i class="bi bi-telephone text-info me-2 mt-1"></i>
+              <span class="text-muted">(123) 456-7890</span>
+            </li>
+            <li class="mb-3 d-flex">
+              <i class="bi bi-envelope text-info me-2 mt-1"></i>
+              <span class="text-muted">info@futurespark.edu</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-top border-secondary mt-4 pt-4 d-flex flex-column flex-md-row justify-content-between align-items-center">
+        <p class="text-muted mb-3 mb-md-0">© 2025 Future Spark University. All rights reserved.</p>
+        <div>
+          <a href="#" class="text-muted me-3">Privacy Policy</a>
+          <a href="#" class="text-muted me-3">Terms of Service</a>
+          <a href="#" class="text-muted">Accessibility</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="scripts.js"></script>
+</body>
 </html>
