@@ -9,6 +9,13 @@ import Programs from "./pages/Programs";
 import ProgramDetail from "./pages/ProgramDetail";
 import Enrollment from "./pages/Enrollment";
 import NotFound from "./pages/NotFound";
+import DashboardLayout from "./components/dashboard/DashboardLayout";
+import Dashboard from "./pages/Dashboard";
+import DashboardTickets from "./pages/DashboardTickets";
+import DashboardPayments from "./pages/DashboardPayments";
+import DashboardPlacement from "./pages/DashboardPlacement";
+import DashboardProfile from "./pages/DashboardProfile";
+import DashboardSettings from "./pages/DashboardSettings";
 
 const queryClient = new QueryClient();
 
@@ -23,9 +30,17 @@ const App = () => (
           <Route path="/programs" element={<Programs />} />
           <Route path="/programs/:id" element={<ProgramDetail />} />
           <Route path="/enrollment" element={<Enrollment />} />
-          {/* These routes will be implemented in future updates */}
-          <Route path="/dashboard" element={<NotFound />} />
-          <Route path="/dashboard/:section" element={<NotFound />} />
+          
+          {/* Dashboard Routes */}
+          <Route path="/dashboard" element={<DashboardLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="tickets" element={<DashboardTickets />} />
+            <Route path="payments" element={<DashboardPayments />} />
+            <Route path="placement" element={<DashboardPlacement />} />
+            <Route path="profile" element={<DashboardProfile />} />
+            <Route path="settings" element={<DashboardSettings />} />
+          </Route>
+          
           {/* Fallback route */}
           <Route path="*" element={<NotFound />} />
         </Routes>
