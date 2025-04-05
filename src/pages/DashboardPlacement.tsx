@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { 
   Card, 
@@ -245,6 +246,7 @@ const DashboardPlacement = () => {
         <PlacementStatusBadge status={placementData.status} />
       </div>
 
+      {/* Document Upload Dialog */}
       <Dialog>
         <DialogContent className="sm:max-w-[450px]">
           <DialogHeader>
@@ -307,6 +309,7 @@ const DashboardPlacement = () => {
         </DialogContent>
       </Dialog>
 
+      {/* Add Application Dialog */}
       <Dialog>
         <DialogContent className="sm:max-w-[500px]">
           <DialogHeader>
@@ -439,29 +442,33 @@ const DashboardPlacement = () => {
                         View
                       </a>
                     </Button>
-                    <DialogTrigger asChild>
-                      <Button 
-                        size="sm"
-                        className="bg-university-teal hover:bg-university-teal/90"
-                        onClick={() => setUploadType('resume')}
-                      >
-                        Update
-                      </Button>
-                    </DialogTrigger>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button 
+                          size="sm"
+                          className="bg-university-teal hover:bg-university-teal/90"
+                          onClick={() => setUploadType('resume')}
+                        >
+                          Update
+                        </Button>
+                      </DialogTrigger>
+                    </Dialog>
                   </div>
                 </div>
               ) : (
                 <div className="flex flex-col items-center justify-center p-6">
                   <Upload size={32} className="text-gray-400 mb-2" />
                   <p className="text-gray-500 mb-4">No resume uploaded yet</p>
-                  <DialogTrigger asChild>
-                    <Button
-                      className="bg-university-teal hover:bg-university-teal/90"
-                      onClick={() => setUploadType('resume')}
-                    >
-                      Upload Resume
-                    </Button>
-                  </DialogTrigger>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button
+                        className="bg-university-teal hover:bg-university-teal/90"
+                        onClick={() => setUploadType('resume')}
+                      >
+                        Upload Resume
+                      </Button>
+                    </DialogTrigger>
+                  </Dialog>
                 </div>
               )}
             </CardContent>
@@ -488,29 +495,33 @@ const DashboardPlacement = () => {
                         View
                       </a>
                     </Button>
-                    <DialogTrigger asChild>
-                      <Button 
-                        size="sm"
-                        className="bg-university-teal hover:bg-university-teal/90"
-                        onClick={() => setUploadType('coverLetter')}
-                      >
-                        Update
-                      </Button>
-                    </DialogTrigger>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button 
+                          size="sm"
+                          className="bg-university-teal hover:bg-university-teal/90"
+                          onClick={() => setUploadType('coverLetter')}
+                        >
+                          Update
+                        </Button>
+                      </DialogTrigger>
+                    </Dialog>
                   </div>
                 </div>
               ) : (
                 <div className="flex flex-col items-center justify-center p-6">
                   <Upload size={32} className="text-gray-400 mb-2" />
                   <p className="text-gray-500 mb-4">No cover letter uploaded yet</p>
-                  <DialogTrigger asChild>
-                    <Button
-                      className="bg-university-teal hover:bg-university-teal/90"
-                      onClick={() => setUploadType('coverLetter')}
-                    >
-                      Upload Cover Letter
-                    </Button>
-                  </DialogTrigger>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button
+                        className="bg-university-teal hover:bg-university-teal/90"
+                        onClick={() => setUploadType('coverLetter')}
+                      >
+                        Upload Cover Letter
+                      </Button>
+                    </DialogTrigger>
+                  </Dialog>
                 </div>
               )}
             </CardContent>
@@ -695,15 +706,17 @@ const DashboardPlacement = () => {
         <CardHeader>
           <div className="flex justify-between items-center">
             <CardTitle className="text-xl">Job Applications</CardTitle>
-            <DialogTrigger asChild>
-              <Button 
-                className="bg-university-teal hover:bg-university-teal/90"
-                onClick={() => setIsAddingApplication(true)}
-              >
-                <Plus size={16} className="mr-2" />
-                Add Application
-              </Button>
-            </DialogTrigger>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button 
+                  className="bg-university-teal hover:bg-university-teal/90"
+                  onClick={() => setIsAddingApplication(true)}
+                >
+                  <Plus size={16} className="mr-2" />
+                  Add Application
+                </Button>
+              </DialogTrigger>
+            </Dialog>
           </div>
         </CardHeader>
         <CardContent>
