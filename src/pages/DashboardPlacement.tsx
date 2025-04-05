@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { 
   Card, 
@@ -44,12 +43,12 @@ import {
   MapPin,
   Phone,
   Upload,
-  User
+  User,
+  Plus
 } from 'lucide-react';
 import { toast } from 'sonner';
 
 const DashboardPlacement = () => {
-  // Sample placement data - in a real app, this would come from the backend
   const [placementData, setPlacementData] = useState({
     status: 'In Progress',
     preferredLocation: 'New York, USA',
@@ -110,14 +109,12 @@ const DashboardPlacement = () => {
     interviewDate: ''
   });
 
-  // Handle file selection for resume/cover letter upload
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       setUploadFile(e.target.files[0]);
     }
   };
 
-  // Handle upload of resume or cover letter
   const handleFileUpload = () => {
     if (!uploadFile) {
       toast.error('Please select a file to upload');
@@ -126,11 +123,9 @@ const DashboardPlacement = () => {
     
     setIsUploading(true);
     
-    // Simulate API call to upload file
     setTimeout(() => {
       const today = new Date().toISOString().split('T')[0];
       
-      // Update placement data based on upload type
       if (uploadType === 'resume') {
         setPlacementData({
           ...placementData,
@@ -150,18 +145,15 @@ const DashboardPlacement = () => {
       setIsUploading(false);
       setUploadFile(null);
       
-      // Close dialog
       document.querySelector("[data-state='open'][role='dialog']")?.dispatchEvent(
         new KeyboardEvent("keydown", { key: "Escape" })
       );
     }, 1500);
   };
 
-  // Handle saving edited preferences
   const handleSavePreferences = () => {
     setIsEditingPreferences(false);
     
-    // Update placement data with edited preferences
     setPlacementData({
       ...placementData,
       preferredLocation: editedPreferences.preferredLocation,
@@ -175,7 +167,6 @@ const DashboardPlacement = () => {
     toast.success('Placement preferences updated successfully');
   };
 
-  // Handle adding a new job application
   const handleAddApplication = () => {
     if (!newApplication.company || !newApplication.position) {
       toast.error('Company and position are required');
@@ -184,10 +175,8 @@ const DashboardPlacement = () => {
     
     setIsAddingApplication(false);
     
-    // Generate a unique ID for the new application
     const newAppId = `APP-${String(placementData.currentApplications.length + 1).padStart(3, '0')}`;
     
-    // Add the new application to the list
     setPlacementData({
       ...placementData,
       currentApplications: [
@@ -204,7 +193,6 @@ const DashboardPlacement = () => {
       ]
     });
     
-    // Reset the form
     setNewApplication({
       company: '',
       position: '',
@@ -217,7 +205,6 @@ const DashboardPlacement = () => {
     toast.success('New job application added successfully');
   };
 
-  // Status badge component
   const ApplicationStatusBadge = ({ status }) => {
     switch (status) {
       case 'Application Submitted':
@@ -235,7 +222,6 @@ const DashboardPlacement = () => {
     }
   };
 
-  // Placement status badge component
   const PlacementStatusBadge = ({ status }) => {
     switch (status) {
       case 'Not Started':
@@ -259,7 +245,6 @@ const DashboardPlacement = () => {
         <PlacementStatusBadge status={placementData.status} />
       </div>
 
-      {/* Upload Document Dialog */}
       <Dialog>
         <DialogContent className="sm:max-w-[450px]">
           <DialogHeader>
@@ -322,7 +307,6 @@ const DashboardPlacement = () => {
         </DialogContent>
       </Dialog>
 
-      {/* Add Application Dialog */}
       <Dialog>
         <DialogContent className="sm:max-w-[500px]">
           <DialogHeader>
@@ -433,7 +417,6 @@ const DashboardPlacement = () => {
       </Dialog>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Column 1: Resume & Cover Letter */}
         <div className="space-y-6">
           <Card>
             <CardHeader>
@@ -534,7 +517,6 @@ const DashboardPlacement = () => {
           </Card>
         </div>
         
-        {/* Column 2: Preferences & Profile */}
         <Card className="lg:col-span-2">
           <CardHeader>
             <div className="flex justify-between items-center">
@@ -709,7 +691,6 @@ const DashboardPlacement = () => {
         </Card>
       </div>
 
-      {/* Job Applications Section */}
       <Card>
         <CardHeader>
           <div className="flex justify-between items-center">
