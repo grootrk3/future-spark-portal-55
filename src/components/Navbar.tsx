@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, User, ChevronDown } from 'lucide-react';
+import { Menu, X, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
@@ -16,7 +16,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center space-x-2">
-            <span className="font-bold text-2xl">FutureSparkUniversity</span>
+            <span className="font-bold text-xl md:text-2xl">FutureSparkUniversity</span>
           </Link>
           
           {/* Desktop Menu */}
@@ -44,11 +44,11 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden mt-4 animate-fade-in">
-            <div className="flex flex-col space-y-4 pb-4">
-              <Link to="/" className="hover:text-university-teal transition-colors" onClick={toggleMenu}>Home</Link>
-              <Link to="/programs" className="hover:text-university-teal transition-colors" onClick={toggleMenu}>Programs</Link>
-              <Link to="/enrollment" className="hover:text-university-teal transition-colors" onClick={toggleMenu}>Enroll Now</Link>
-              <Link to="/dashboard" className="hover:text-university-teal transition-colors" onClick={toggleMenu}>Student Portal</Link>
+            <div className="flex flex-col space-y-4 py-4">
+              <Link to="/" className="hover:text-university-teal transition-colors px-2 py-2" onClick={toggleMenu}>Home</Link>
+              <Link to="/programs" className="hover:text-university-teal transition-colors px-2 py-2" onClick={toggleMenu}>Programs</Link>
+              <Link to="/enrollment" className="hover:text-university-teal transition-colors px-2 py-2" onClick={toggleMenu}>Enroll Now</Link>
+              <Link to="/dashboard" className="hover:text-university-teal transition-colors px-2 py-2" onClick={toggleMenu}>Student Portal</Link>
             </div>
           </div>
         )}

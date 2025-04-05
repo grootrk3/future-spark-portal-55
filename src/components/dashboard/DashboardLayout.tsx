@@ -65,7 +65,8 @@ const DashboardLayout = () => {
         <div className="md:hidden fixed top-20 left-4 z-40">
           <button 
             onClick={toggleSidebar}
-            className="bg-university-teal text-white p-2 rounded-md"
+            className="bg-university-teal text-white p-2 rounded-md shadow-md"
+            aria-label="Toggle Sidebar"
           >
             {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -75,7 +76,7 @@ const DashboardLayout = () => {
         <aside 
           className={`fixed inset-y-0 left-0 transform ${
             isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-          } md:relative md:translate-x-0 z-30 w-64 bg-gray-900 text-white transition-transform duration-300 ease-in-out pt-20 md:pt-0 overflow-y-auto`}
+          } md:relative md:translate-x-0 z-30 w-64 bg-gray-900 text-white transition-transform duration-300 ease-in-out pt-20 md:pt-0 overflow-y-auto shadow-lg`}
         >
           <div className="p-6 border-b border-gray-800">
             <h2 className="text-xl font-bold">Student Dashboard</h2>
@@ -114,8 +115,8 @@ const DashboardLayout = () => {
           </nav>
         </aside>
 
-        {/* Main content */}
-        <main className="flex-1 p-4 md:p-8 pt-24 md:pt-8 bg-gray-100">
+        {/* Main content with improved padding for mobile */}
+        <main className="flex-1 p-4 md:p-8 pt-24 md:pt-8 bg-gray-100 overflow-x-hidden">
           <Outlet />
         </main>
       </div>

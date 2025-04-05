@@ -44,8 +44,8 @@ const Dashboard = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-gray-800">Dashboard Overview</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0">
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-800">Dashboard Overview</h1>
         <span className="text-sm bg-university-lightBlue text-university-blue px-3 py-1 rounded-full">
           {studentInfo.semester}
         </span>
@@ -54,7 +54,7 @@ const Dashboard = () => {
       {/* Student Info Card */}
       <Card>
         <CardHeader className="pb-2">
-          <CardTitle className="text-xl flex justify-between">
+          <CardTitle className="text-lg sm:text-xl flex flex-col sm:flex-row justify-between gap-2 sm:gap-0">
             <span>Student Information</span>
             <span className="text-sm font-normal text-gray-500">ID: {studentInfo.id}</span>
           </CardTitle>
@@ -87,7 +87,7 @@ const Dashboard = () => {
               </div>
               <div>
                 <p className="text-sm font-medium text-gray-500">{stat.label}</p>
-                <p className="text-2xl font-bold">{stat.value}</p>
+                <p className="text-xl sm:text-2xl font-bold">{stat.value}</p>
               </div>
             </CardContent>
           </Card>
@@ -95,10 +95,10 @@ const Dashboard = () => {
       </div>
 
       {/* Action Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Link to="/dashboard/tickets">
-          <Card className="hover:shadow-md transition-shadow cursor-pointer">
-            <CardContent className="p-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <Link to="/dashboard/tickets" className="h-full">
+          <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
+            <CardContent className="p-4 sm:p-6 h-full">
               <Bell className="mb-4 text-university-teal" size={24} />
               <h3 className="font-semibold mb-1">Support Tickets</h3>
               <p className="text-sm text-gray-500">
@@ -108,9 +108,9 @@ const Dashboard = () => {
           </Card>
         </Link>
         
-        <Link to="/dashboard/payments">
-          <Card className="hover:shadow-md transition-shadow cursor-pointer">
-            <CardContent className="p-6">
+        <Link to="/dashboard/payments" className="h-full">
+          <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
+            <CardContent className="p-4 sm:p-6 h-full">
               <Calendar className="mb-4 text-university-teal" size={24} />
               <h3 className="font-semibold mb-1">Payments</h3>
               <p className="text-sm text-gray-500">
@@ -120,9 +120,9 @@ const Dashboard = () => {
           </Card>
         </Link>
         
-        <Link to="/dashboard/placement">
-          <Card className="hover:shadow-md transition-shadow cursor-pointer">
-            <CardContent className="p-6">
+        <Link to="/dashboard/placement" className="h-full">
+          <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
+            <CardContent className="p-4 sm:p-6 h-full">
               <Users className="mb-4 text-university-teal" size={24} />
               <h3 className="font-semibold mb-1">Placement</h3>
               <p className="text-sm text-gray-500">
@@ -136,13 +136,13 @@ const Dashboard = () => {
       {/* Recent Announcements */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-xl">Recent Announcements</CardTitle>
+          <CardTitle className="text-lg sm:text-xl">Recent Announcements</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             {recentAnnouncements.map(announcement => (
               <div key={announcement.id} className="border-b border-gray-200 pb-4 last:border-0 last:pb-0">
-                <div className="flex justify-between mb-1">
+                <div className="flex flex-col sm:flex-row justify-between mb-1 gap-1 sm:gap-0">
                   <h3 className="font-semibold">{announcement.title}</h3>
                   <span className="text-xs text-gray-500">{announcement.date}</span>
                 </div>
