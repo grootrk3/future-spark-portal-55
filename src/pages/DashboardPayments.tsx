@@ -271,209 +271,131 @@ const DashboardPayments = () => {
         </Card>
       </div>
 
-      {/* Upload Payment Slip Dialog */}
-      <Dialog>
-        <DialogContent className="sm:max-w-[500px]">
-          <DialogHeader>
-            <DialogTitle>Upload Payment Slip</DialogTitle>
-            <DialogDescription>
-              Upload a payment slip or receipt to confirm your payment for {selectedPayment?.description}.
-            </DialogDescription>
-          </DialogHeader>
-          
-          <div className="space-y-4 py-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="text-sm font-medium text-gray-700 mb-1 block">
-                  Payment Method
-                </label>
-                <Select 
-                  value={uploadData.paymentMethod}
-                  onValueChange={(value) => setUploadData({...uploadData, paymentMethod: value})}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select method" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Bank Transfer">Bank Transfer</SelectItem>
-                    <SelectItem value="Credit Card">Credit Card</SelectItem>
-                    <SelectItem value="Debit Card">Debit Card</SelectItem>
-                    <SelectItem value="Cash Deposit">Cash Deposit</SelectItem>
-                    <SelectItem value="Online Payment">Online Payment</SelectItem>
-                  </SelectContent>
-                </Select>
+      {/* Upload Payment Slip Dialog - this is now a standalone component */}
+      {selectedPayment && (
+        <Dialog>
+          <DialogContent className="sm:max-w-[500px]">
+            <DialogHeader>
+              <DialogTitle>Upload Payment Slip</DialogTitle>
+              <DialogDescription>
+                Upload a payment slip or receipt to confirm your payment for {selectedPayment?.description}.
+              </DialogDescription>
+            </DialogHeader>
+            
+            <div className="space-y-4 py-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-sm font-medium text-gray-700 mb-1 block">
+                    Payment Method
+                  </label>
+                  <Select 
+                    value={uploadData.paymentMethod}
+                    onValueChange={(value) => setUploadData({...uploadData, paymentMethod: value})}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select method" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Bank Transfer">Bank Transfer</SelectItem>
+                      <SelectItem value="Credit Card">Credit Card</SelectItem>
+                      <SelectItem value="Debit Card">Debit Card</SelectItem>
+                      <SelectItem value="Cash Deposit">Cash Deposit</SelectItem>
+                      <SelectItem value="Online Payment">Online Payment</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                
+                <div>
+                  <label className="text-sm font-medium text-gray-700 mb-1 block">
+                    Payment Date
+                  </label>
+                  <Input 
+                    type="date" 
+                    value={uploadData.paymentDate}
+                    onChange={(e) => setUploadData({...uploadData, paymentDate: e.target.value})}
+                  />
+                </div>
               </div>
               
               <div>
                 <label className="text-sm font-medium text-gray-700 mb-1 block">
-                  Payment Date
+                  Transaction ID / Reference Number
                 </label>
                 <Input 
-                  type="date" 
-                  value={uploadData.paymentDate}
-                  onChange={(e) => setUploadData({...uploadData, paymentDate: e.target.value})}
+                  placeholder="Enter transaction ID or reference number"
+                  value={uploadData.transactionId}
+                  onChange={(e) => setUploadData({...uploadData, transactionId: e.target.value})}
                 />
               </div>
-            </div>
-            
-            <div>
-              <label className="text-sm font-medium text-gray-700 mb-1 block">
-                Transaction ID / Reference Number
-              </label>
-              <Input 
-                placeholder="Enter transaction ID or reference number"
-                value={uploadData.transactionId}
-                onChange={(e) => setUploadData({...uploadData, transactionId: e.target.value})}
-              />
-            </div>
-            
-            <div>
-              <label className="text-sm font-medium text-gray-700 mb-1 block">
-                Additional Notes (Optional)
-              </label>
-              <Textarea 
-                placeholder="Any additional information about your payment"
-                value={uploadData.notes}
-                onChange={(e) => setUploadData({...uploadData, notes: e.target.value})}
-                className="resize-none min-h-[80px]"
-              />
-            </div>
-            
-            <div>
-              <label className="text-sm font-medium text-gray-700 mb-1 block">
-                Upload Payment Slip
-              </label>
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-gray-400 focus-within:border-university-teal transition-colors">
-                <input
-                  type="file"
-                  id="file-upload"
-                  className="sr-only"
-                  accept=".pdf,.jpg,.jpeg,.png"
-                  onChange={handleFileChange}
-                />
-                <label htmlFor="file-upload" className="cursor-pointer">
-                  <div className="flex flex-col items-center">
-                    <Upload className="h-8 w-8 text-gray-400 mb-2" />
-                    <span className="text-sm font-medium text-gray-700">
-                      {uploadData.file ? uploadData.file.name : 'Click to upload payment slip'}
-                    </span>
-                    <span className="text-xs text-gray-500 mt-1">
-                      {!uploadData.file && 'Supports PDF, JPG, PNG up to 5MB'}
-                    </span>
-                  </div>
+              
+              <div>
+                <label className="text-sm font-medium text-gray-700 mb-1 block">
+                  Additional Notes (Optional)
                 </label>
-              </div>
-            </div>
-          </div>
-          
-          <DialogFooter>
-            <Button variant="outline" onClick={() => {
-              document.querySelector("[data-state='open'][role='dialog']")?.dispatchEvent(
-                new KeyboardEvent("keydown", { key: "Escape" })
-              );
-            }}>
-              Cancel
-            </Button>
-            <Button 
-              onClick={handleUploadSlip} 
-              className="bg-university-teal hover:bg-university-teal/90"
-              disabled={isUploading}
-            >
-              {isUploading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Uploading...
-                </>
-              ) : (
-                <>
-                  <Upload className="mr-2 h-4 w-4" />
-                  Upload Slip
-                </>
-              )}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {/* Payment Details Dialog */}
-      <Dialog>
-        <DialogContent className="sm:max-w-[500px]">
-          <DialogHeader>
-            <DialogTitle>Payment Details</DialogTitle>
-            <DialogDescription>
-              Detailed information about this payment.
-            </DialogDescription>
-          </DialogHeader>
-          
-          {selectedPayment && (
-            <div className="space-y-4 py-4">
-              <div className="flex justify-between items-center pb-2 border-b">
-                <h3 className="text-lg font-semibold">{selectedPayment.description}</h3>
-                <StatusBadge status={selectedPayment.status} />
+                <Textarea 
+                  placeholder="Any additional information about your payment"
+                  value={uploadData.notes}
+                  onChange={(e) => setUploadData({...uploadData, notes: e.target.value})}
+                  className="resize-none min-h-[80px]"
+                />
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <p className="text-sm text-gray-500">Payment ID</p>
-                  <p className="font-medium">{selectedPayment.id}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500">Amount</p>
-                  <p className="font-medium">${selectedPayment.amount.toFixed(2)}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500">Due Date</p>
-                  <p className="font-medium">{selectedPayment.dueDate}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500">Term</p>
-                  <p className="font-medium">{selectedPayment.term}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500">Payment Type</p>
-                  <p className="font-medium">{selectedPayment.paymentType}</p>
+              <div>
+                <label className="text-sm font-medium text-gray-700 mb-1 block">
+                  Upload Payment Slip
+                </label>
+                <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-gray-400 focus-within:border-university-teal transition-colors">
+                  <input
+                    type="file"
+                    id="file-upload"
+                    className="sr-only"
+                    accept=".pdf,.jpg,.jpeg,.png"
+                    onChange={handleFileChange}
+                  />
+                  <label htmlFor="file-upload" className="cursor-pointer">
+                    <div className="flex flex-col items-center">
+                      <Upload className="h-8 w-8 text-gray-400 mb-2" />
+                      <span className="text-sm font-medium text-gray-700">
+                        {uploadData.file ? uploadData.file.name : 'Click to upload payment slip'}
+                      </span>
+                      <span className="text-xs text-gray-500 mt-1">
+                        {!uploadData.file && 'Supports PDF, JPG, PNG up to 5MB'}
+                      </span>
+                    </div>
+                  </label>
                 </div>
               </div>
-              
-              {selectedPayment.status === 'Paid' && (
-                <>
-                  <div className="pt-2 border-t">
-                    <h4 className="text-sm font-semibold mb-2">Payment Information</h4>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <p className="text-sm text-gray-500">Payment Date</p>
-                        <p className="font-medium">{selectedPayment.paidDate}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-500">Method</p>
-                        <p className="font-medium">{selectedPayment.paymentMethod}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-500">Confirmation #</p>
-                        <p className="font-medium">{selectedPayment.confirmationNumber}</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {selectedPayment.receiptUrl && (
-                    <div className="pt-2">
-                      <a
-                        href={selectedPayment.receiptUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center text-university-teal hover:underline"
-                      >
-                        <FileText size={16} className="mr-2" />
-                        View Receipt
-                      </a>
-                    </div>
-                  )}
-                </>
-              )}
             </div>
-          )}
-        </DialogContent>
-      </Dialog>
+            
+            <DialogFooter>
+              <Button variant="outline" onClick={() => {
+                document.querySelector("[data-state='open'][role='dialog']")?.dispatchEvent(
+                  new KeyboardEvent("keydown", { key: "Escape" })
+                );
+              }}>
+                Cancel
+              </Button>
+              <Button 
+                onClick={handleUploadSlip} 
+                className="bg-university-teal hover:bg-university-teal/90"
+                disabled={isUploading}
+              >
+                {isUploading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Uploading...
+                  </>
+                ) : (
+                  <>
+                    <Upload className="mr-2 h-4 w-4" />
+                    Upload Slip
+                  </>
+                )}
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      )}
 
       {/* Payment List */}
       <div className="space-y-8">
@@ -508,28 +430,109 @@ const DashboardPayments = () => {
                       </TableCell>
                       <TableCell className="text-right">
                         <div className="flex justify-end space-x-2">
-                          <DialogTrigger asChild>
-                            <Button 
-                              variant="ghost" 
-                              size="sm"
-                              onClick={() => setSelectedPayment(payment)}
-                            >
-                              <Eye size={16} />
-                            </Button>
-                          </DialogTrigger>
-                          
-                          {(payment.status === 'Pending' || payment.status === 'Overdue') && (
+                          {/* View Payment Details */}
+                          <Dialog>
                             <DialogTrigger asChild>
                               <Button 
                                 variant="ghost" 
                                 size="sm"
-                                onClick={() => initializeUpload(payment)}
+                                onClick={() => setSelectedPayment(payment)}
                               >
-                                <Upload size={16} />
+                                <Eye size={16} />
                               </Button>
                             </DialogTrigger>
+                            <DialogContent className="sm:max-w-[500px]">
+                              <DialogHeader>
+                                <DialogTitle>Payment Details</DialogTitle>
+                                <DialogDescription>
+                                  Detailed information about this payment.
+                                </DialogDescription>
+                              </DialogHeader>
+                              
+                              <div className="space-y-4 py-4">
+                                <div className="flex justify-between items-center pb-2 border-b">
+                                  <h3 className="text-lg font-semibold">{payment.description}</h3>
+                                  <StatusBadge status={payment.status} />
+                                </div>
+                                
+                                <div className="grid grid-cols-2 gap-4">
+                                  <div>
+                                    <p className="text-sm text-gray-500">Payment ID</p>
+                                    <p className="font-medium">{payment.id}</p>
+                                  </div>
+                                  <div>
+                                    <p className="text-sm text-gray-500">Amount</p>
+                                    <p className="font-medium">${payment.amount.toFixed(2)}</p>
+                                  </div>
+                                  <div>
+                                    <p className="text-sm text-gray-500">Due Date</p>
+                                    <p className="font-medium">{payment.dueDate}</p>
+                                  </div>
+                                  <div>
+                                    <p className="text-sm text-gray-500">Term</p>
+                                    <p className="font-medium">{payment.term}</p>
+                                  </div>
+                                  <div>
+                                    <p className="text-sm text-gray-500">Payment Type</p>
+                                    <p className="font-medium">{payment.paymentType}</p>
+                                  </div>
+                                </div>
+                                
+                                {payment.status === 'Paid' && (
+                                  <>
+                                    <div className="pt-2 border-t">
+                                      <h4 className="text-sm font-semibold mb-2">Payment Information</h4>
+                                      <div className="grid grid-cols-2 gap-4">
+                                        <div>
+                                          <p className="text-sm text-gray-500">Payment Date</p>
+                                          <p className="font-medium">{payment.paidDate}</p>
+                                        </div>
+                                        <div>
+                                          <p className="text-sm text-gray-500">Method</p>
+                                          <p className="font-medium">{payment.paymentMethod}</p>
+                                        </div>
+                                        <div>
+                                          <p className="text-sm text-gray-500">Confirmation #</p>
+                                          <p className="font-medium">{payment.confirmationNumber}</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    
+                                    {payment.receiptUrl && (
+                                      <div className="pt-2">
+                                        <a
+                                          href={payment.receiptUrl}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="flex items-center text-university-teal hover:underline"
+                                        >
+                                          <FileText size={16} className="mr-2" />
+                                          View Receipt
+                                        </a>
+                                      </div>
+                                    )}
+                                  </>
+                                )}
+                              </div>
+                            </DialogContent>
+                          </Dialog>
+                          
+                          {/* Upload Payment Slip */}
+                          {(payment.status === 'Pending' || payment.status === 'Overdue') && (
+                            <Dialog>
+                              <DialogTrigger asChild>
+                                <Button 
+                                  variant="ghost" 
+                                  size="sm"
+                                  onClick={() => initializeUpload(payment)}
+                                >
+                                  <Upload size={16} />
+                                </Button>
+                              </DialogTrigger>
+                            </Dialog>
                           )}
                           
+                          {/* View Receipt */}
                           {payment.status === 'Paid' && payment.receiptUrl && (
                             <Button 
                               variant="ghost" 
